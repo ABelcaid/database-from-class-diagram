@@ -62,18 +62,72 @@ alter table Personnel add constraint FK_Association_2 foreign key (Age_id)
 /*==============================================================*/
 insert into Entreprise_X
 values (1,"Itech","omar halli","rabat");
+insert into Entreprise_X
+values (2,"CSecurity","otman safsafi","casablanca");
 
 /*==============================================================*/
 /* Inset data in agence Table                                           */
 /*==============================================================*/
 insert into agence
-values (1,1,"Itech agence","agadir",'2020-04-26');
+values (1,1,"Itech agence 1","agadir",'2020-04-26');
+insert into agence
+values (2,1,"Itech agence 2","fes",'2017-02-16');
+insert into agence
+values (3,1,"Itech agence 3","safi",'2018-04-17');
+
 
 /*==============================================================*/
 /* Inset data in personnel Table                                           */
 /*==============================================================*/
 insert into personnel
 values (1,2,"Ali talal",24,"Responsable SI",8900.5,'2020-01-26');
+insert into personnel
+values (2,2,"abdelali hossini",44,"Responsable financier",9900.5,'2010-01-26');
+insert into personnel
+values (3,2,"omar charkaoui",34,"Responsable achat",8900.5,'2015-02-24');
+
+
+
+/*==============================================================*/
+/* Update in Entreprise_X Table                                           */
+/*==============================================================*/
+update Entreprise_X
+set DG = 'rachid azrou'
+where id = 2;
+
+/*==============================================================*/
+/* Delate in Entreprise_X Table                                           */
+/*==============================================================*/
+delete from Entreprise_X where id = 2;
+
+-- show table
+ select * from Entreprise_X;
+
+
+
+
+
+
+/*==============================================================*/
+/* Update in agence Table                                           */
+/*==============================================================*/
+update agence
+set localisation = 'casablanca'
+where id = 3;
+
+/*==============================================================*/
+/* Delate in agence Table                                           */
+/*==============================================================*/
+delete from agence where id = 3;
+
+-- show table
+ select * from agence;
+
+
+
+
+
+
 
 
 /*==============================================================*/
@@ -91,9 +145,34 @@ delete from personnel where id = 3;
 -- show table
  select * from personnel;
 
+
+
+
+
+
+
+
+
 /*==============================================================*/
 /* Create user +  permission                                  */
 /*==============================================================*/
 CREATE USER 'belcaid2'@'localhost' IDENTIFIED BY 'belcaid';
 
  grant insert on gestion_personnel.* to 'belcaid2'@'localhost';
+
+---------------------------------------------------------------------
+
+CREATE USER 'belcaid3'@'localhost' IDENTIFIED BY 'belcaid123';
+
+ grant ALL PRIVILEGES on gestion_personnel.* to 'belcaid3'@'localhost';
+
+
+
+---------------------- connect to MySQL from win PowerShell --------------------------------------
+
+-- cd "C:\Program Files\MySQL\MySQL Server 8.0\bin" 
+
+.\mysql.exe -u belcaid3 -p     
+
+ -- get the user
+select user();
