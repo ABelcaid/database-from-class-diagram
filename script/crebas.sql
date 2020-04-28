@@ -3,12 +3,17 @@
 /* Created on:     26/04/2020 13:37:56                          */
 /*==============================================================*/
 
+CREATE DATABASE gestion_personnel;
+USE gestion_personnel;
 
 drop table if exists Agence;
 
 drop table if exists Entreprise_X;
 
 drop table if exists Personnel;
+
+
+
 
 /*==============================================================*/
 /* Table: Agence                                                */
